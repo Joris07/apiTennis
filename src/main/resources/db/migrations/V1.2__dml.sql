@@ -1,0 +1,1 @@
+insert into joueurs (nom, prenom) values ('gourdon', 'joris');
