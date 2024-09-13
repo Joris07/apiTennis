@@ -3,36 +3,31 @@ package joris.gourdon.api.modeles;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
 @Entity
-@Table(name = "joueurs")
-public class Joueur {
+@Table(name = "equipes")
+public class Equipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String nom;
-
-    @Column(nullable = false, length = 50)
-    private String prenom;
-
-    private LocalDate dateNaissance;
-
-    @Column(length = 50)
-    private String nationalite;
-
-    @Column(length = 1)
-    private Character genre;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clubId")
     private Club club;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categorieId")
+    private Categorie categorie;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "divisionId")
+    private Division division;
 }
