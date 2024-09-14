@@ -14,25 +14,25 @@ import java.time.LocalDate;
 @Table(name = "joueurs")
 public class Joueur {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-    @Column(nullable = false, length = 50)
-    private String nom;
+	@Column(nullable = false, length = 50)
+	private String nom;
 
-    @Column(nullable = false, length = 50)
-    private String prenom;
+	@Column(nullable = false, length = 50)
+	private String prenom;
 
-    private LocalDate dateNaissance;
+	private LocalDate dateNaissance;
 
-    @Column(length = 50)
-    private String nationalite;
+	@Column(length = 50)
+	private String nationalite;
 
-    @Column(length = 1)
-    private Character genre;
+	@Column(length = 1)
+	private Character genre;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "clubId")
-    private Club club;
+	@ManyToOne
+	@JoinColumn(name = "clubId")
+	private Club club;
 }
