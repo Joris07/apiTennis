@@ -1,6 +1,6 @@
 package joris.gourdon.api.dto;
 
-import joris.gourdon.api.modeles.Club;
+import joris.gourdon.api.models.Club;
 
 import java.time.LocalDate;
 

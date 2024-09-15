@@ -1,4 +1,4 @@
-package joris.gourdon.api.modeles;
+package joris.gourdon.api.models;
 
 
 import jakarta.persistence.*;

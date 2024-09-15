@@ -1,7 +1,7 @@
-package joris.gourdon.api.controller;
+package joris.gourdon.api.controllers;
 
-import joris.gourdon.api.dto.ClubDTO;
-import joris.gourdon.api.service.ClubService;
+import joris.gourdon.api.dto.JoueurDTO;
+import joris.gourdon.api.services.JoueurService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +12,13 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("clubs")
-public class ClubController {
+@RequestMapping("joueurs")
+public class JoueurController {
 
-	ClubService clubService;
+	JoueurService joueurService;
+
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<ClubDTO> search() {
-		return this.clubService.search();
+	public List<JoueurDTO> search() {
+		return this.joueurService.search();
 	}
 }

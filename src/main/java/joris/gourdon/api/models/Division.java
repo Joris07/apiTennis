@@ -1,4 +1,4 @@
-package joris.gourdon.api.modeles;
+package joris.gourdon.api.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,14 +9,14 @@ import lombok.*;
 @Setter
 @Builder
 @Entity
-@Table(name = "typesTournoi")
-public class TypeTournoi {
+@Table(name = "divisions")
+public class Division {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true, nullable = false, length = 50)
+    @Column(unique = true, nullable = false, length = 10)
     private String nom;
 }
 

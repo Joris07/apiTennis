@@ -1,4 +1,4 @@
-package joris.gourdon.api.modeles;
+package joris.gourdon.api.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,8 +9,8 @@ import lombok.*;
 @Setter
 @Builder
 @Entity
-@Table(name = "typesSurface")
-public class TypeSurface {
+@Table(name = "typesTournoi")
+public class TypeTournoi {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,3 +19,4 @@ public class TypeSurface {
     @Column(unique = true, nullable = false, length = 50)
     private String nom;
 }
+

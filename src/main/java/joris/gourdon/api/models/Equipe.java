@@ -1,4 +1,4 @@
-package joris.gourdon.api.modeles;
+package joris.gourdon.api.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,8 +9,8 @@ import lombok.*;
 @Setter
 @Builder
 @Entity
-@Table(name = "championnats")
-public class Championnat {
+@Table(name = "equipes")
+public class Equipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +19,9 @@ public class Championnat {
     @Column(nullable = false, length = 100)
     private String nom;
 
-    @Column(nullable = false)
-    private int annee;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clubId")
+    private Club club;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categorieId")

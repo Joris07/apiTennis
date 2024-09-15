@@ -1,4 +1,4 @@
-package joris.gourdon.api.securite;
+package joris.gourdon.api.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +21,8 @@ public class ApplicationSecurity {
 						AbstractHttpConfigurer::disable
 				).authorizeHttpRequests(
 						authorize -> authorize
-								.requestMatchers("/joueurs").permitAll()
-								.requestMatchers("/clubs").permitAll()
+								.requestMatchers("/joueurs/**").permitAll()
+								.requestMatchers("/clubs/**").permitAll()
 								.anyRequest().authenticated()
 				)
 				.sessionManagement(httpSecuritySessionManagementConfigurer ->

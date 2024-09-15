@@ -1,8 +1,8 @@
-package joris.gourdon.api.service;
+package joris.gourdon.api.services;
 
 import joris.gourdon.api.dto.JoueurDTO;
-import joris.gourdon.api.repository.ClubRepository;
-import joris.gourdon.api.repository.JoueurRepository;
+import joris.gourdon.api.repositories.ClubRepository;
+import joris.gourdon.api.repositories.JoueurRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
