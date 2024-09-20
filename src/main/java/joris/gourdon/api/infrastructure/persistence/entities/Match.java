@@ -21,18 +21,18 @@ public class Match {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "joueur1Id")
-    private Joueur joueur1;
+    private JoueurEntity joueurEntity1;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "joueur2Id")
-    private Joueur joueur2;
+    private JoueurEntity joueurEntity2;
 
     @Column(length = 20)
     private String score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gagnantId")
-    private Joueur gagnant;
+    private JoueurEntity gagnant;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rencontreId")

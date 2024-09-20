@@ -1,6 +1,8 @@
 package joris.gourdon.api.infrastructure.persistence.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -12,7 +14,7 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "joueurs")
-public class Joueur {
+public class JoueurEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +32,11 @@ public class Joueur {
 	private String nationalite;
 
 	@Column(length = 1)
-	private Character genre;
+	private String genre;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "clubId")
+	@Valid
+	@NotNull
 	private ClubEntity club;
 }

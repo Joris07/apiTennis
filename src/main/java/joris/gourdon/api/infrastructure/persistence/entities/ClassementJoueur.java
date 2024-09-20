@@ -20,7 +20,7 @@ public class ClassementJoueur {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "joueurId", nullable = false)
-    private Joueur joueur;
+    private JoueurEntity joueurEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "classementId", nullable = false)

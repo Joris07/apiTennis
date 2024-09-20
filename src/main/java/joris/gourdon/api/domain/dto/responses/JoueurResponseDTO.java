@@ -1,11 +1,11 @@
-package joris.gourdon.api.domain.dto;
+package joris.gourdon.api.domain.dto.responses;
 
 import jakarta.validation.constraints.*;
-import joris.gourdon.api.infrastructure.persistence.entities.ClubEntity;
+import joris.gourdon.api.domain.dto.ClubDTO;
 
 import java.time.LocalDate;
 
-public record JoueurDTO(
+public record JoueurResponseDTO(
 		int id,
 
 		@NotNull(message = "Le nom est obligatoire.")
@@ -23,9 +23,9 @@ public record JoueurDTO(
 		String nationalite,
 
 		@NotNull(message = "Le genre est obligatoire.")
-		@Pattern(regexp = "^[HF]$", message = "Le genre doit être soit 'H' pour Homme, soit 'F' pour Femme.")
-		Character genre,
+		@Pattern(regexp = "[HF]", message = "Le genre doit être 'H' ou 'F'")
+		String genre,
 
 		@NotNull(message = "Le club est obligatoire.")
-		ClubEntity club
+		ClubDTO club
 ) {}

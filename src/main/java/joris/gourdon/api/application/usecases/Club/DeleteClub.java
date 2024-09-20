@@ -15,7 +15,7 @@ public class DeleteClub {
 
 	public void delete(int id) {
 		Club existingClub = clubRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException("Club non trouvé avec l'id : " + id));
+				.orElseThrow(() -> new EntityNotFoundException("Club non trouvé."));
 		clubRepository.deleteById(id);
 	}
 }

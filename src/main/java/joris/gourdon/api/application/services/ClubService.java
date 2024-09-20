@@ -1,7 +1,7 @@
 package joris.gourdon.api.application.services;
 
 import jakarta.persistence.EntityNotFoundException;
-import joris.gourdon.api.application.mapping.ClubDTOMapper;
+import joris.gourdon.api.application.mappingDTO.ClubDTOMapper;
 import joris.gourdon.api.application.usecases.Club.*;
 import joris.gourdon.api.domain.dto.ClubDTO;
 import joris.gourdon.api.domain.models.Club;

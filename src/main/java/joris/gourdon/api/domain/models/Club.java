@@ -64,4 +64,16 @@ public class Club {
 	public void setPays(String pays) {
 		this.pays = pays;
 	}
+
+	@Override
+	public String toString() {
+		return "Club{" +
+				"id=" + id +
+				", nom='" + nom + '\'' +
+				", adresse='" + adresse + '\'' +
+				", ville='" + ville + '\'' +
+				", codePostal='" + codePostal + '\'' +
+				", pays='" + pays + '\'' +
+				'}';
+	}
 }
