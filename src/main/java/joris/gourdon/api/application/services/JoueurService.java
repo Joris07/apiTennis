@@ -6,6 +6,8 @@ import joris.gourdon.api.application.usecases.Joueur.*;
 import joris.gourdon.api.domain.dto.requests.JoueurRequestDTO;
 import joris.gourdon.api.domain.dto.responses.JoueurResponseDTO;
 import joris.gourdon.api.domain.models.Joueur;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +22,8 @@ public class JoueurService {
 	private final DeleteJoueur deleteJoueur;
 
 	private final JoueurDTOMapper joueurDTOMapper;
+
+	private static final Logger logger = LoggerFactory.getLogger(UpdateJoueur.class);
 
 	public JoueurService(FindAllJoueur findAllJoueur, CreateJoueur createJoueur, UpdateJoueur updateJoueur, FindJoueurById findJoueurById, DeleteJoueur deleteJoueur, JoueurDTOMapper joueurDTOMapper) {
 		this.findAllJoueur = findAllJoueur;
@@ -43,15 +47,15 @@ public class JoueurService {
 	}
 
 	public JoueurResponseDTO createJoueur(JoueurRequestDTO joueurRequestDTO) {
-		Joueur joueur = joueurDTOMapper.toRequestDomain(joueurRequestDTO);
+		Joueur joueur = joueurDTOMapper.toRequestDomain(joueurRequestDTO, 0);
 		Joueur savedJoueur = createJoueur.create(joueur);
-		JoueurResponseDTO joueurResponseDTO = joueurDTOMapper.toResponseDTO(savedJoueur);
-		return joueurResponseDTO;
+		return joueurDTOMapper.toResponseDTO(savedJoueur);
 	}
 
-	public void updateJoueur(int id, JoueurRequestDTO joueurRequestDTO) {
-		Joueur joueur = joueurDTOMapper.toRequestDomain(joueurRequestDTO);
+	public JoueurResponseDTO updateJoueur(int id, JoueurRequestDTO joueurRequestDTO) {
+		Joueur joueur = joueurDTOMapper.toRequestDomain(joueurRequestDTO, id);
 		updateJoueur.update(id, joueur);
+		return joueurDTOMapper.toResponseDTO(joueur);
 	}
 
 	public void deleteJoueur(int id) {

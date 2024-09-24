@@ -4,8 +4,6 @@ import jakarta.validation.Valid;
 import joris.gourdon.api.application.services.JoueurService;
 import joris.gourdon.api.domain.dto.requests.JoueurRequestDTO;
 import joris.gourdon.api.domain.dto.responses.JoueurResponseDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -40,14 +38,8 @@ public class JoueurController {
 	}
 
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> update(@PathVariable int id, @Valid @RequestBody JoueurRequestDTO joueurRequestDTO) {
-		joueurService.updateJoueur(id, joueurRequestDTO);
-		return ResponseEntity.ok().build();
-	}
-
-	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable int id) {
-		joueurService.deleteJoueur(id);
-		return ResponseEntity.noContent().build();
+	public ResponseEntity<JoueurResponseDTO> update(@PathVariable int id, @RequestBody JoueurRequestDTO joueurRequestDTO) {
+		JoueurResponseDTO joueurResponseDTO = joueurService.updateJoueur(id, joueurRequestDTO);
+		return ResponseEntity.ok().body(joueurResponseDTO);
 	}
 }

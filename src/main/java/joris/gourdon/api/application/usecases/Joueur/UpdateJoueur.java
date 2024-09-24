@@ -15,7 +15,7 @@ public class UpdateJoueur {
 
 	public Joueur update(int id, Joueur joueurDetails) {
 		Joueur existingJoueur = joueurRepository.findById(id)
-				.orElseThrow(() -> new EntityNotFoundException("Club non trouvé."));
+				.orElseThrow(() -> new EntityNotFoundException("Joueur non trouvé."));
 
 		existingJoueur.setNom(joueurDetails.getNom());
 		existingJoueur.setPrenom(joueurDetails.getPrenom());
@@ -23,7 +23,7 @@ public class UpdateJoueur {
 		existingJoueur.setGenre(joueurDetails.getGenre());
 		existingJoueur.setDateNaissance(joueurDetails.getDateNaissance());
 		existingJoueur.setNationalite(joueurDetails.getNationalite());
-		
+
 		return joueurRepository.save(existingJoueur);
 	}
 }

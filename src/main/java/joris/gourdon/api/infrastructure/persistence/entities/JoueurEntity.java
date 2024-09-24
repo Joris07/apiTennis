@@ -39,4 +39,11 @@ public class JoueurEntity {
 	@Valid
 	@NotNull
 	private ClubEntity club;
+
+	@PreRemove
+	public void detachClub() {
+		if (this.club != null) {
+			this.club = null;
+		}
+	}
 }

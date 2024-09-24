@@ -40,7 +40,7 @@ CREATE TABLE joueurs (
     nationalite VARCHAR(50),
     genre VARCHAR(1) CHECK (genre IN ('H', 'F')),  -- H pour Homme, F pour Femme
     clubId INT,
-    FOREIGN KEY (clubId) REFERENCES clubs(id)
+    FOREIGN KEY (clubId) REFERENCES clubs(id) ON DELETE SET NULL
 );
 
 CREATE TABLE classementsJoueurs (

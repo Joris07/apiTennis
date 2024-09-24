@@ -30,12 +30,13 @@ public class JoueurDTOMapper {
 		);
 	}
 
-	public Joueur toRequestDomain(JoueurRequestDTO joueurRequestDTO) {
-
+	public Joueur toRequestDomain(JoueurRequestDTO joueurRequestDTO, int id) {
 		Club club = clubDTOMapper.toDomain(clubService.findById(joueurRequestDTO.getClubId()));
 
-		Joueur joueur = new Joueur(
-				joueurRequestDTO.getId(),
+		int joueurId = (joueurRequestDTO.getId() != 0) ? joueurRequestDTO.getId() : id;
+
+		return new Joueur(
+				joueurId,
 				joueurRequestDTO.getNom(),
 				joueurRequestDTO.getPrenom(),
 				joueurRequestDTO.getDateNaissance(),
@@ -43,7 +44,5 @@ public class JoueurDTOMapper {
 				joueurRequestDTO.getGenre(),
 				club
 		);
-
-		return joueur;
 	}
 }
