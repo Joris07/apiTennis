@@ -24,9 +24,9 @@ public class Championnat {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categorieId")
-    private Categorie categorie;
+    private CategorieEntity categorieEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "divisionId")
-    private Division division;
+    private DivisionEntity divisionEntity;
 }

@@ -38,7 +38,7 @@ public class JoueurController {
 	}
 
 	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<JoueurResponseDTO> update(@PathVariable int id, @RequestBody JoueurRequestDTO joueurRequestDTO) {
+	public ResponseEntity<JoueurResponseDTO> updatePut(@PathVariable int id, @Valid @RequestBody JoueurRequestDTO joueurRequestDTO) {
 		JoueurResponseDTO joueurResponseDTO = joueurService.updateJoueur(id, joueurRequestDTO);
 		return ResponseEntity.ok().body(joueurResponseDTO);
 	}

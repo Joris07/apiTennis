@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "classementsJoueurs")
-public class ClassementJoueur {
+public class ClassementJoueurEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class ClassementJoueur {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "classementId", nullable = false)
-    private Classement classement;
+    private ClassementEntity classementEntity;
 
     @Column(nullable = false)
     private LocalDate date;

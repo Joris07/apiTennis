@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "rencontres")
-public class Rencontre {
+public class RencontreEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,15 +21,15 @@ public class Rencontre {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pouleId", nullable = false)
-    private Poule poule;
+    private PouleEntity pouleEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "equipe1Id", nullable = false)
-    private Equipe equipe1;
+    private EquipeEntity equipeEntity1;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "equipe2Id", nullable = false)
-    private Equipe equipe2;
+    private EquipeEntity equipeEntity2;
 
     @Column
     private LocalDate date;
@@ -39,5 +39,5 @@ public class Rencontre {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gagnantId")
-    private Equipe gagnant;
+    private EquipeEntity gagnant;
 }

@@ -13,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Match {
+public class MatchEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,17 +36,17 @@ public class Match {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rencontreId")
-    private Rencontre rencontre;
+    private RencontreEntity rencontreEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tournoiId")
-    private Tournoi tournoi;
+    private TournoiEntity tournoiEntity;
 
     @PrePersist
     @PreUpdate
     private void validate() {
-        if ((rencontre != null && tournoi != null) || (rencontre == null && tournoi == null)) {
-            throw new IllegalStateException("Match doit être lié à une rencontre ou un tournoi, mais pas les deux.");
+        if ((rencontreEntity != null && tournoiEntity != null) || (rencontreEntity == null && tournoiEntity == null)) {
+            throw new IllegalStateException("Le match doit être lié à une rencontre ou un tournoi, mais pas les deux.");
         }
     }
 }

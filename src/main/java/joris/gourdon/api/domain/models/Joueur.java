@@ -1,6 +1,5 @@
 package joris.gourdon.api.domain.models;
 
-
 import java.time.LocalDate;
 
 public class Joueur {

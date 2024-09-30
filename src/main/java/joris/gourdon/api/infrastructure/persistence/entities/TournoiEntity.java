@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Builder
 @Entity
 @Table(name = "tournois")
-public class Tournoi {
+public class TournoiEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,11 +34,11 @@ public class Tournoi {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "typeSurfaceId")
-    private TypeSurface typeSurface;
+    private TypeSurfaceEntity typeSurfaceEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "typeTournoiId")
-    private TypeTournoi typeTournoi;
+    private TypeTournoiEntity typeTournoiEntity;
 
     @Column(precision = 12, scale = 2)
     private BigDecimal montantInscription;

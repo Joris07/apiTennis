@@ -33,10 +33,8 @@ public class JoueurDTOMapper {
 	public Joueur toRequestDomain(JoueurRequestDTO joueurRequestDTO, int id) {
 		Club club = clubDTOMapper.toDomain(clubService.findById(joueurRequestDTO.getClubId()));
 
-		int joueurId = (joueurRequestDTO.getId() != 0) ? joueurRequestDTO.getId() : id;
-
 		return new Joueur(
-				joueurId,
+				id,
 				joueurRequestDTO.getNom(),
 				joueurRequestDTO.getPrenom(),
 				joueurRequestDTO.getDateNaissance(),

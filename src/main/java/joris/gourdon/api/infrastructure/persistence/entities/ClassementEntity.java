@@ -9,14 +9,13 @@ import lombok.*;
 @Setter
 @Builder
 @Entity
-@Table(name = "typesTournoi")
-public class TypeTournoi {
+@Table(name = "classements")
+public class ClassementEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true, nullable = false, length = 50)
+    @Column(nullable = false, unique = true, length = 10)
     private String nom;
 }
-

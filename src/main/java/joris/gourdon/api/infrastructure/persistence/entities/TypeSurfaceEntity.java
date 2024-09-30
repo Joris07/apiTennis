@@ -9,13 +9,13 @@ import lombok.*;
 @Setter
 @Builder
 @Entity
-@Table(name = "classements")
-public class Classement {
+@Table(name = "typesSurface")
+public class TypeSurfaceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, unique = true, length = 10)
+    @Column(unique = true, nullable = false, length = 50)
     private String nom;
 }
