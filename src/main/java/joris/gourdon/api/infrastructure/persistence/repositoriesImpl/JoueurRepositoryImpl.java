@@ -34,6 +34,12 @@ public class JoueurRepositoryImpl implements JoueurRepository {
 	}
 
 	@Override
+	public Optional<Joueur> findByEmail(String email) {
+		return joueurRepositoryJpa.findByEmail(email)
+				.map(joueurMapper::entityJoueurToDomainJoueur);
+	}
+
+	@Override
 	public Joueur save(Joueur joueur) {
 		JoueurEntity joueurEntity = joueurMapper.domainJoueurToEntityJoueur(joueur);
 		JoueurEntity savedEntity = joueurRepositoryJpa.save(joueurEntity);

@@ -51,13 +51,13 @@ INSERT INTO clubs (nom, adresse, ville, codePostal, pays) VALUES
 ('Club B', '456 Boulevard des Champions', 'VilleB', '69002', 'France'),
 ('Club C', '789 Rue des Joueurs', 'VilleC', '33003', 'France');
 
--- Insertion des données dans la table joueurs
-INSERT INTO joueurs (prenom, nom, dateNaissance, nationalite, genre, clubId) VALUES
-('Jean', 'Dupont', '1990-05-15', 'Française', 'H', 1),
-('Marie', 'Dubois', '1988-07-22', 'Française', 'F', 2),
-('Pierre', 'Martin', '1995-11-30', 'Française', 'H', 3),
-('Sophie', 'Durand', '1992-04-20', 'Française', 'F', 1),
-('Paul', 'Moreau', '1987-09-10', 'Française', 'H', 2);
+-- Insertion des données dans la table joueurs avec des mots de passe hachés (exemple avec bcrypt)
+INSERT INTO joueurs (prenom, nom, dateNaissance, nationalite, genre, email, password, clubId) VALUES
+('Jean', 'Dupont', '1990-05-15', 'Française', 'H', 'jean.dupont@example.com', '$2y$10$eCQdZrj4YfG6QJzdr.kHyukT/x1dF4CqVRUUp6KbSfepeY.YAwKxu', 1),
+('Marie', 'Dubois', '1988-07-22', 'Française', 'F', 'marie.dubois@example.com', '$2y$10$k5mYt8QlKgYk8F2RX4eD6eT.Zm/Ik9Ty2FvBnDAF50tHFw/VpQJlq', 2),
+('Pierre', 'Martin', '1995-11-30', 'Française', 'H', 'pierre.martin@example.com', '$2y$10$AaLxhU5ksfQ0yD4EDsF8IeOnHvsUw6EXULXXeIcV2IQuJ2VPJ52A2', 3),
+('Sophie', 'Durand', '1992-04-20', 'Française', 'F', 'sophie.durand@example.com', '$2y$10$6X2yFPJIG8Dfj5b5ldRE2Ou0nDo/EJoF5z.m/Mmq/ywOHZihGFDey', 1),
+('Paul', 'Moreau', '1987-09-10', 'Française', 'H', 'paul.moreau@example.com', '$2y$10$6JPPYyVLOfrSX2xOvBFve.vVk50MUBDJj.M.f5ZG4M7g1CeOSFCYW', 2);
 
 -- Insertion des données dans la table classementsJoueurs
 INSERT INTO classementsJoueurs (joueurId, classementId, date) VALUES

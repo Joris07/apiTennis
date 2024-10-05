@@ -6,33 +6,27 @@ import joris.gourdon.api.application.usecases.Joueur.*;
 import joris.gourdon.api.domain.dto.requests.JoueurRequestDTO;
 import joris.gourdon.api.domain.dto.responses.JoueurResponseDTO;
 import joris.gourdon.api.domain.models.Joueur;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import joris.gourdon.api.domain.repositories.JoueurRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Service
-public class JoueurService {
+public class JoueurService implements UserDetailsService {
 
-	private final FindAllJoueur findAllJoueur;
-	private final CreateJoueur createJoueur;
-	private final UpdateJoueur updateJoueur;
-	private final FindJoueurById findJoueurById;
-	private final DeleteJoueur deleteJoueur;
-
-	private final JoueurDTOMapper joueurDTOMapper;
-
-	private static final Logger logger = LoggerFactory.getLogger(UpdateJoueur.class);
-
-	public JoueurService(FindAllJoueur findAllJoueur, CreateJoueur createJoueur, UpdateJoueur updateJoueur, FindJoueurById findJoueurById, DeleteJoueur deleteJoueur, JoueurDTOMapper joueurDTOMapper) {
-		this.findAllJoueur = findAllJoueur;
-		this.createJoueur = createJoueur;
-		this.updateJoueur = updateJoueur;
-		this.findJoueurById = findJoueurById;
-		this.deleteJoueur = deleteJoueur;
-		this.joueurDTOMapper = joueurDTOMapper;
-	}
+	private FindAllJoueur findAllJoueur;
+	private CreateJoueur createJoueur;
+	private UpdateJoueur updateJoueur;
+	private FindJoueurById findJoueurById;
+	private DeleteJoueur deleteJoueur;
+	private JoueurRepository joueurRepository;
+	private JoueurDTOMapper joueurDTOMapper;
 
 	public List<JoueurResponseDTO> findAll() {
 		return findAllJoueur.findAll().stream()
@@ -60,5 +54,12 @@ public class JoueurService {
 
 	public void deleteJoueur(int id) {
 		deleteJoueur.delete(id);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		return (UserDetails) this.joueurRepository // A continuer
+				.findByEmail(email)
+				.orElseThrow(() -> new UsernameNotFoundException("Aucun utilisateur trouvé"));
 	}
 }

@@ -1,9 +1,6 @@
 package joris.gourdon.api.domain.dto.requests;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -37,6 +34,15 @@ public class JoueurRequestDTO {
 
 	@NotNull(message = "Le club est obligatoire.")
 	private Integer clubId;
+
+	@NotNull(message = "L'email est obligatoire.")
+	@Email(message = "L'email doit être valide.")
+	@Size(max = 100, message = "L'email ne doit pas dépasser 100 caractères.")
+	private String email;
+
+	@NotNull(message = "Le mot de passe est obligatoire.")
+	@Size(min = 8, message = "Le mot de passe doit contenir au moins 8 caractères.")
+	private String password;
 
 	@Override
 	public String toString() {

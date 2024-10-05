@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface JoueurRepository {
 	List<Joueur> findAll();
 	Optional<Joueur> findById(int id);
+	Optional<Joueur> findByEmail(String email);
 	Joueur save(Joueur joueur);
 	void deleteById(int id);
 }

@@ -23,6 +23,7 @@ public class UpdateJoueur {
 		existingJoueur.setGenre(joueurDetails.getGenre());
 		existingJoueur.setDateNaissance(joueurDetails.getDateNaissance());
 		existingJoueur.setNationalite(joueurDetails.getNationalite());
+		// existingJoueur.setEmail(joueurDetails.getEmail());
 
 		return joueurRepository.save(existingJoueur);
 	}

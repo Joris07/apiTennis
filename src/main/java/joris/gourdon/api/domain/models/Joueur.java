@@ -10,8 +10,10 @@ public class Joueur {
 	private String nationalite;
 	private String genre;
 	private Club club;
+	private String email;
+	private String password;
 
-	public Joueur(int id, String nom, String prenom, LocalDate dateNaissance, String nationalite, String genre, Club club) {
+	public Joueur(int id, String nom, String prenom, LocalDate dateNaissance, String nationalite, String genre, Club club, String email, String password) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -19,6 +21,8 @@ public class Joueur {
 		this.nationalite = nationalite;
 		this.genre = genre;
 		this.club = club;
+		this.email = email;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -75,6 +79,22 @@ public class Joueur {
 
 	public void setClub(Club club) {
 		this.club = club;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override

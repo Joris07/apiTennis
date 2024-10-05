@@ -1,7 +1,6 @@
 package joris.gourdon.api.application.mappingDTO;
 
 import joris.gourdon.api.application.services.ClubService;
-import joris.gourdon.api.application.services.JoueurService;
 import joris.gourdon.api.domain.dto.requests.JoueurRequestDTO;
 import joris.gourdon.api.domain.dto.responses.JoueurResponseDTO;
 import joris.gourdon.api.domain.models.Club;
@@ -26,7 +25,9 @@ public class JoueurDTOMapper {
 				joueur.getDateNaissance(),
 				joueur.getNationalite(),
 				joueur.getGenre(),
-				clubDTOMapper.toDTO(joueur.getClub())
+				clubDTOMapper.toDTO(joueur.getClub()),
+				joueur.getEmail(),
+				joueur.getPassword()
 		);
 	}
 
@@ -40,7 +41,9 @@ public class JoueurDTOMapper {
 				joueurRequestDTO.getDateNaissance(),
 				joueurRequestDTO.getNationalite(),
 				joueurRequestDTO.getGenre(),
-				club
+				club,
+				joueurRequestDTO.getEmail(),
+				joueurRequestDTO.getPassword()
 		);
 	}
 }

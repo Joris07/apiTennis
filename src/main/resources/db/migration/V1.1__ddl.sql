@@ -38,7 +38,9 @@ CREATE TABLE joueurs (
     nom VARCHAR(50) NOT NULL,
     dateNaissance DATE,
     nationalite VARCHAR(50),
-    genre VARCHAR(1) CHECK (genre IN ('H', 'F')),  -- H pour Homme, F pour Femme
+    genre VARCHAR(1) CHECK (genre IN ('H', 'F')),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
     clubId INT,
     FOREIGN KEY (clubId) REFERENCES clubs(id) ON DELETE SET NULL
 );
