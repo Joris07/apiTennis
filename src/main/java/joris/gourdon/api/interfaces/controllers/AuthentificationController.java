@@ -2,6 +2,7 @@ package joris.gourdon.api.interfaces.controllers;
 
 import joris.gourdon.api.application.services.JoueurService;
 import joris.gourdon.api.domain.dto.AuthentificationDTO;
+import joris.gourdon.api.domain.dto.requests.JoueurRequestDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +18,11 @@ import java.util.Map;
 public class AuthentificationController {
 	private JoueurService joueurService;
 	private AuthenticationManager authenticationManager;
+
+	@PostMapping(path = "/register")
+	public void register(@RequestBody JoueurRequestDTO joueurRequestDTO) {
+		this.joueurService.createJoueur(joueurRequestDTO) ;
+	}
 
 	@PostMapping(path = "/login")
 	public Map<String, String> connexion(@RequestBody AuthentificationDTO authentificationDTO) {

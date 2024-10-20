@@ -25,6 +25,7 @@ public class JoueurService implements UserDetailsService {
 	private UpdateJoueur updateJoueur;
 	private FindJoueurById findJoueurById;
 	private DeleteJoueur deleteJoueur;
+
 	private JoueurRepository joueurRepository;
 	private JoueurDTOMapper joueurDTOMapper;
 
@@ -58,7 +59,7 @@ public class JoueurService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		return (UserDetails) this.joueurRepository // A continuer
+		return this.joueurRepository
 				.findByEmail(email)
 				.orElseThrow(() -> new UsernameNotFoundException("Aucun utilisateur trouvé"));
 	}

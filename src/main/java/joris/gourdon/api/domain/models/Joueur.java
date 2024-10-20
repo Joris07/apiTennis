@@ -1,8 +1,13 @@
 package joris.gourdon.api.domain.models;
 
-import java.time.LocalDate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-public class Joueur {
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
+
+public class Joueur implements UserDetails {
 	private int id;
 	private String nom;
 	private String prenom;
@@ -89,8 +94,18 @@ public class Joueur {
 		this.email = email;
 	}
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of();
+	}
+
 	public String getPassword() {
 		return password;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.email;
 	}
 
 	public void setPassword(String password) {
