@@ -30,10 +30,11 @@ public class ApplicationSecurity {
 				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers("/api/auth/**").permitAll()
+						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
 						.requestMatchers("/api/joueurs/**").authenticated()
 						.requestMatchers("/api/clubs/**").authenticated()
 						.requestMatchers("/api/tournois/**").authenticated()
-						.anyRequest().permitAll() // On autorise tout le reste pour le moment
+						.anyRequest().permitAll()
 				)
 				.sessionManagement(session -> session
 						.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

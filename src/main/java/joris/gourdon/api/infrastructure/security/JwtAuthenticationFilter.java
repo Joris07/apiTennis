@@ -37,9 +37,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         log.debug("Traitement de la requête: {}", request.getRequestURI());
         log.debug("Header Authorization: {}", authHeader);
 
-        // Si c'est une requête d'authentification, on la laisse passer
-        if (request.getRequestURI().startsWith("/api/auth/")) {
-            log.debug("Requête d'authentification, passage au filtre suivant");
+        // Si c'est une requête d'authentification ou de Swagger, on la laisse passer
+        if (request.getRequestURI().startsWith("/api/auth/") || 
+            request.getRequestURI().startsWith("/swagger-ui/") || 
+            request.getRequestURI().startsWith("/v3/api-docs")) {
+            log.debug("Requête publique, passage au filtre suivant");
             filterChain.doFilter(request, response);
             return;
         }
