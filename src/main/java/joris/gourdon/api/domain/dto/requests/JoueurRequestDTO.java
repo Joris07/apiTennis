@@ -32,7 +32,6 @@ public class JoueurRequestDTO {
 	@Pattern(regexp = "[HF]", message = "Le genre doit être 'H' ou 'F'")
 	private String genre;
 
-	@NotNull(message = "Le club est obligatoire.")
 	private Integer clubId;
 
 	@NotNull(message = "L'email est obligatoire.")
@@ -54,6 +53,8 @@ public class JoueurRequestDTO {
 				", nationalite='" + nationalite + '\'' +
 				", genre='" + genre + '\'' +
 				", clubId=" + clubId +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
 				'}';
 	}
 }

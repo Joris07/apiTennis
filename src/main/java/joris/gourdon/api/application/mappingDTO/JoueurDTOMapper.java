@@ -32,7 +32,10 @@ public class JoueurDTOMapper {
 	}
 
 	public Joueur toRequestDomain(JoueurRequestDTO joueurRequestDTO, int id) {
-		Club club = clubDTOMapper.toDomain(clubService.findById(joueurRequestDTO.getClubId()));
+		Club club = null;
+		if (joueurRequestDTO.getClubId() != null) {
+			club = clubDTOMapper.toDomain(clubService.findById(joueurRequestDTO.getClubId()));
+		}
 
 		return new Joueur(
 				id,

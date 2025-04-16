@@ -2,7 +2,6 @@ package joris.gourdon.api.infrastructure.persistence.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -37,7 +36,6 @@ public class JoueurEntity {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "clubId")
 	@Valid
-	@NotNull
 	private ClubEntity club;
 
 	@Column(nullable = false, unique = true, length = 100)
