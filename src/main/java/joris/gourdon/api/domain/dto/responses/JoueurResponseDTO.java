@@ -1,7 +1,6 @@
 package joris.gourdon.api.domain.dto.responses;
 
 import jakarta.validation.constraints.*;
-import joris.gourdon.api.domain.dto.ClubDTO;
 
 import java.time.LocalDate;
 
@@ -27,7 +26,7 @@ public record JoueurResponseDTO(
 		String genre,
 
 		@NotNull(message = "Le club est obligatoire.")
-		ClubDTO club,
+		ClubResponseDTO club,
 
 		@NotNull(message = "L'email est obligatoire.")
 		@Email(message = "L'email doit être valide.")

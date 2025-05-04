@@ -3,7 +3,8 @@ package joris.gourdon.api.application.services;
 import jakarta.persistence.EntityNotFoundException;
 import joris.gourdon.api.application.mappingDTO.ClubDTOMapper;
 import joris.gourdon.api.application.usecases.Club.*;
-import joris.gourdon.api.domain.dto.ClubDTO;
+import joris.gourdon.api.domain.dto.requests.ClubRequestDTO;
+import joris.gourdon.api.domain.dto.responses.ClubResponseDTO;
 import joris.gourdon.api.domain.models.Club;
 import org.springframework.stereotype.Service;
 
@@ -29,26 +30,26 @@ public class ClubService {
 		this.deleteClub = deleteClub;
 	}
 
-	public List<ClubDTO> findAll() {
+	public List<ClubResponseDTO> findAll() {
 		return findAllClub.findAll().stream()
-				.map(clubDTOMapper::toDTO)
+				.map(clubDTOMapper::toResponseDTO)
 				.collect(Collectors.toList());
 	}
 
-	public ClubDTO findById(int id) {
+	public ClubResponseDTO findById(int id) {
 		Club club = findClubById.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Club non trouvé"));
-		return clubDTOMapper.toDTO(club);
+		return clubDTOMapper.toResponseDTO(club);
 	}
 
-	public ClubDTO createClub(ClubDTO clubDTO) {
-		Club club = clubDTOMapper.toDomain(clubDTO);
+	public ClubResponseDTO createClub(ClubRequestDTO clubRequestDTO) {
+		Club club = clubDTOMapper.toRequestDomain(clubRequestDTO, 0);
 		Club savedClub = createClub.create(club);
-		return clubDTOMapper.toDTO(savedClub);
+		return clubDTOMapper.toResponseDTO(savedClub);
 	}
 
-	public void updateClub(int id, ClubDTO clubDTO) {
-		Club club = clubDTOMapper.toDomain(clubDTO);
+	public void updateClub(int id, ClubRequestDTO clubRequestDTO) {
+		Club club = clubDTOMapper.toRequestDomain(clubRequestDTO, id);
 		updateClub.update(id, club);
 	}
 

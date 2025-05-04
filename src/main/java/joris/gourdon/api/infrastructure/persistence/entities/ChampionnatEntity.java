@@ -10,8 +10,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table(name = "championnats")
-public class Championnat {
-
+public class ChampionnatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -29,4 +28,4 @@ public class Championnat {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "divisionId")
     private DivisionEntity divisionEntity;
-}
+} 

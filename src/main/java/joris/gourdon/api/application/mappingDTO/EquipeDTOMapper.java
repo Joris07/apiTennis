@@ -1,14 +1,39 @@
 package joris.gourdon.api.application.mappingDTO;
 
-import joris.gourdon.api.domain.dto.EquipeDTO;
+import joris.gourdon.api.application.services.ClubService;
+import joris.gourdon.api.domain.dto.requests.EquipeRequestDTO;
+import joris.gourdon.api.domain.dto.responses.EquipeResponseDTO;
+import joris.gourdon.api.domain.models.Club;
 import joris.gourdon.api.domain.models.Equipe;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Service;
 
-@Mapper(componentModel = "spring")
-public interface EquipeDTOMapper {
-	EquipeDTOMapper INSTANCE = Mappers.getMapper(EquipeDTOMapper.class);
+@Service
+public class EquipeDTOMapper {
+	private final ClubService clubService;
+	private final ClubDTOMapper clubDTOMapper = ClubDTOMapper.INSTANCE;
 
-	EquipeDTO toDTO(Equipe equipe);
-	Equipe toDomain(EquipeDTO equipeDTO);
+	public EquipeDTOMapper(ClubService clubService) {
+		this.clubService = clubService;
+	}
+
+	public EquipeResponseDTO toResponseDTO(Equipe equipe) {
+		return new EquipeResponseDTO(
+				equipe.getId(),
+				equipe.getNom(),
+				clubDTOMapper.toResponseDTO(equipe.getClub())
+		);
+	}
+
+	public Equipe toRequestDomain(EquipeRequestDTO equipeRequestDTO, int id) {
+		Club club = null;
+		if (equipeRequestDTO.getClubId() != null) {
+			club = clubDTOMapper.toDomain(clubService.findById(equipeRequestDTO.getClubId()));
+		}
+
+		return new Equipe(
+				id,
+				equipeRequestDTO.getNom(),
+				club
+		);
+	}
 }

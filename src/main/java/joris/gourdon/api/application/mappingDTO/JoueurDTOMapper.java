@@ -25,7 +25,7 @@ public class JoueurDTOMapper {
 				joueur.getDateNaissance(),
 				joueur.getNationalite(),
 				joueur.getGenre(),
-				clubDTOMapper.toDTO(joueur.getClub()),
+				joueur.getClub() != null ? clubDTOMapper.toResponseDTO(joueur.getClub()) : null,
 				joueur.getEmail(),
 				joueur.getPassword()
 		);
@@ -34,7 +34,7 @@ public class JoueurDTOMapper {
 	public Joueur toRequestDomain(JoueurRequestDTO joueurRequestDTO, int id) {
 		Club club = null;
 		if (joueurRequestDTO.getClubId() != null) {
-			club = clubDTOMapper.toDomain(clubService.findById(joueurRequestDTO.getClubId()));
+			club = clubDTOMapper.toRequestDomain(null, joueurRequestDTO.getClubId());
 		}
 
 		return new Joueur(

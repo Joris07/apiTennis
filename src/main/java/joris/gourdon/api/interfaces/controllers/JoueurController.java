@@ -42,4 +42,10 @@ public class JoueurController {
 		JoueurResponseDTO joueurResponseDTO = joueurService.updateJoueur(id, joueurRequestDTO);
 		return ResponseEntity.ok().body(joueurResponseDTO);
 	}
+
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable int id) {
+		joueurService.deleteJoueur(id);
+		return ResponseEntity.noContent().build();
+	}
 }

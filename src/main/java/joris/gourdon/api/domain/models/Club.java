@@ -8,6 +8,8 @@ public class Club {
 	private String codePostal;
 	private String pays;
 
+	public Club() {}
+
 	public Club(int id, String nom, String adresse, String ville, String codePostal, String pays) {
 		this.id = id;
 		this.nom = nom;
@@ -21,44 +23,44 @@ public class Club {
 		return id;
 	}
 
-	public String getNom() {
-		return nom;
-	}
-
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public String getCodePostal() {
-		return codePostal;
-	}
-
-	public String getPays() {
-		return pays;
-	}
-
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
 	}
 
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
+	public String getAdresse() {
+		return adresse;
+	}
+
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
+	}
+
+	public String getVille() {
+		return ville;
 	}
 
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
 
+	public String getCodePostal() {
+		return codePostal;
+	}
+
 	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
+	}
+
+	public String getPays() {
+		return pays;
 	}
 
 	public void setPays(String pays) {

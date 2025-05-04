@@ -21,5 +21,5 @@ public class PouleEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "championnatId", nullable = false)
-    private Championnat championnat;
+    private ChampionnatEntity championnat;
 }

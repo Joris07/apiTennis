@@ -10,12 +10,10 @@ public class Equipe {
 
 	public Equipe() {}
 
-	public Equipe(int id, String nom, Club club, Categorie categorie, Division division) {
+	public Equipe(int id, String nom, Club club) {
 		this.id = id;
 		this.nom = nom;
 		this.club = club;
-		this.categorie = categorie;
-		this.division = division;
 	}
 
 	// Getters et Setters

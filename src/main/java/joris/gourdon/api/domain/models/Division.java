@@ -1,16 +1,15 @@
 package joris.gourdon.api.domain.models;
 
-public class Division {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Division {
 	private int id;
 	private String nom;
-
-	public Division() {}
-
-	public Division(int id, String nom) {
-		this.id = id;
-		this.nom = nom;
-	}
 
 	// Getters et Setters
 	public int getId() {
